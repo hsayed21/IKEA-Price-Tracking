@@ -103,13 +103,15 @@ def record_price(current_price, last_price):
             price_data = json.load(file)
 
         # Update the last recorded price's date if the price is the same
-        if price_data and current_price == last_price:
-            price_data[-1]['time'] = data['time']
-        else:
+        if price_data and current_price != last_price:
             price_data.append(data)
+            with open(json_file_path, 'w') as file:
+                json.dump(price_data, file, indent=4)
+            #price_data[-1]['time'] = data['time']
+        #else:
+            #price_data.append(data)
 
-        with open(json_file_path, 'w') as file:
-            json.dump(price_data, file, indent=4)
+        
             
     except IOError as e:
         print(f"Error updating JSON file: {e}")
