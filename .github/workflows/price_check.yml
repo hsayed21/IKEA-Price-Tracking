@@ -1,8 +1,8 @@
 name: Run IKEA Price Check Script
 
 on:
-  schedule:
-    - cron: '*/120 * * * *'  # Runs every 2 hour
+  # schedule:
+  #   - cron: '*/120 * * * *'  # Runs every 2 hour
   workflow_dispatch:
 
 jobs:
